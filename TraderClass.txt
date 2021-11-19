@@ -1,0 +1,22 @@
+package com.stream;
+
+//class for trader
+class Trader{
+	String name;
+	String city;
+	public Trader(String name, String city) {
+		super();
+		this.name = name;
+		this.city = city;
+	}
+	public String getName() {
+		return name;
+	}
+	public String getCity() {
+		return city;
+	}
+	public String toString(){
+		return "Name: "+this.name+" City: "+this.city+"\n";
+	}
+	
+}

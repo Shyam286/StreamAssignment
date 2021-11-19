@@ -1,0 +1,34 @@
+package com.stream;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Stream_1 {
+	public static void main(String[] args) {
+		List<Fruit> fruit=Arrays.asList(
+				new Fruit("Apple",49,100,"red"),
+				new Fruit("Grapes",52,33,"purple"),
+				new Fruit("Orange",55,80,"red"),
+				new Fruit("Avacado",300,120,"red"),
+				new Fruit("banana",30,25,"yellow")
+					);
+		
+ 		System.out.println("Question 1\n");
+
+		List<Fruit> f=fruit.stream().filter(n->n.getCalories()<100).sorted((a,b)->b.getCalories()-a.getCalories()).collect(Collectors.toList());
+		f.forEach(System.out::println);
+		
+		 System.out.println("____________________________________________________________");
+ 		System.out.println("Question 2\n");
+		List<Fruit> cl=fruit.stream().sorted(Comparator.comparing(Fruit::getColor)).collect(Collectors.toList());
+		cl.forEach(System.out::println);
+		
+		 System.out.println("____________________________________________________________");
+	 		System.out.println("Question 3\n");
+		List<Fruit> f2=fruit.stream().filter(n->n.getColor()=="red").sorted((a,b)->a.getPrice()-b.getPrice()).collect(Collectors.toList());
+		f2.forEach(System.out::println);
+	}
+
+}

@@ -1,0 +1,29 @@
+package com.stream;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Stream_11 {
+	public static void main(String[] args) {
+		List<Trader> trader=Arrays.asList(
+				new Trader("shyam","mumbai"),
+				new Trader("rahul","delhi"),
+				new Trader("yogesh","ahmdabad"),
+				new Trader("ravi","Indore"),
+				new Trader("pratik","ahmdabad")
+			);		
+		System.out.println("Question 11");
+
+		System.out.println("Traders details sort by name: ");
+			List<Trader> tr2=	trader.parallelStream().sorted((a,b)->(a.getName()).compareTo(b.getName())).collect(Collectors.toList());
+			System.out.println(tr2);
+			
+            System.out.println("____________________________________________________________");
+    		System.out.println("Question 12");
+
+            System.out.println("No of trader based in indore: ");
+			long count=trader.stream().filter(n->n.getCity().equals("Indore")).count();
+			System.out.println(count);
+	}
+}

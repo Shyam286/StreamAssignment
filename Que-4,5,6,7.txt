@@ -1,0 +1,40 @@
+package com.stream;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class Stream_5 {
+	public static void main(String[] args) {
+		List<News> news=Arrays.asList(
+				new News(101,"user1","user2","budget"),
+				new News(104,"user2","user3","market"),
+				new News(107,"user4","user1","budget"),
+				new News(107,"user3","user4","loss"),
+				new News(108,"user5","user1","budget")
+					);
+		
+
+	        System.out.println("Question 4");
+		news.stream().max(Comparator.comparing(News::getCommentByUser).reversed()).ifPresent(System.out::println);
+		
+		System.out.println("______________________________");
+		 
+	        System.out.println("Question 5");
+		 news.stream().map(n->n.commentByUser).sorted().forEach(System.out::println);
+		
+		long count=news.stream().filter(n->n.getComment().equals("budget")).count();
+		System.out.println(count);
+		System.out.println("______________________________");
+		
+		
+	        System.out.println("Question 6");
+		Optional<String> max1=news.stream().map(News::getCommentByUser).max((a,b)->a.compareTo(b));
+		
+		System.out.println(max1.get());
+		System.out.println("______________________________");
+
+		
+	        System.out.println("Question 7");
+		news.stream().max(Comparator.comparing(News::getCommentByUser).reversed()).map(News::getCommentByUser).ifPresent(System.out::println);
+	}
+}
